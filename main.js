@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Page Fade In
+    
     document.body.classList.add('page-fade-in');
+setTimeout(() => {
+    document.body.classList.add('animation-done');
+}, 700); // animation (0.6s) khatam hone ke thori der baad transform hata do
 
     // 3. Floating Parallax Shapes (Hero Background)
     const hero = document.querySelector('.hero-section');
