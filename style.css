@@ -1805,4 +1805,20 @@ textarea.form-control {
     .section-title {
         font-size: 2rem;
     }
+    
+}
+
+
+/* Chatbase Select Dropdown Only */
+.cbWidget-select,
+[class*="select"],
+select {
+    color: black !important;
+    background: white !important;
+    border: 2px solid #7B2FFF !important;
+}
+
+select option {
+    color: black !important;
+    background: white !important;
 }
