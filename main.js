@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Page Fade In
-    
     document.body.classList.add('page-fade-in');
-setTimeout(() => {
-    document.body.classList.add('animation-done');
-}, 700); // animation (0.6s) khatam hone ke thori der baad transform hata do
+    setTimeout(() => {
+        document.body.classList.add('animation-done');
+    }, 700);
 
     // 3. Floating Parallax Shapes (Hero Background)
     const hero = document.querySelector('.hero-section');
@@ -43,7 +42,6 @@ setTimeout(() => {
             navMenu.classList.toggle('mobile-open');
         });
         
-        // Close menu when clicking navigation links
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -76,7 +74,7 @@ setTimeout(() => {
     const animateCounters = () => {
         stats.forEach(counter => {
             const target = +counter.getAttribute('data-target');
-            const duration = 2000; // ms
+            const duration = 2000;
             const step = (target / duration) * 10;
             let current = 0;
             
@@ -86,7 +84,6 @@ setTimeout(() => {
                     counter.innerText = Math.ceil(current);
                     setTimeout(updateCount, 10);
                 } else {
-                    // Make sure it displays precisely the target (with + or % if specified in html text layout)
                     counter.innerText = target;
                 }
             };
@@ -110,7 +107,6 @@ setTimeout(() => {
     // 8. Client Logos Infinite Marquee Loop
     const marqueeTrack = document.getElementById('marquee-track');
     if (marqueeTrack) {
-        // Clone the content of marqueeTrack once to make seamless infinite loop
         const innerHTML = marqueeTrack.innerHTML;
         marqueeTrack.innerHTML = innerHTML + innerHTML;
     }
@@ -125,8 +121,7 @@ setTimeout(() => {
 
         const startAutoplay = () => {
             autoplayInterval = setInterval(() => {
-                // Scroll right slightly
-                const cardWidth = 424; // Card width + gap
+                const cardWidth = 424;
                 const currentScroll = reviewsCarousel.scrollLeft;
                 const maxScroll = reviewsCarousel.scrollWidth - reviewsCarousel.clientWidth;
                 
@@ -142,13 +137,11 @@ setTimeout(() => {
             clearInterval(autoplayInterval);
         };
 
-        // Autoplay initiation
         startAutoplay();
         
         reviewsCarousel.addEventListener('mouseenter', stopAutoplay);
         reviewsCarousel.addEventListener('mouseleave', startAutoplay);
 
-        // Mouse Drag scroll
         reviewsCarousel.addEventListener('mousedown', (e) => {
             isDown = true;
             reviewsCarousel.style.cursor = 'grabbing';
@@ -170,7 +163,7 @@ setTimeout(() => {
             if (!isDown) return;
             e.preventDefault();
             const x = e.pageX - reviewsCarousel.offsetLeft;
-            const walk = (x - startX) * 1.5; // Scroll speed
+            const walk = (x - startX) * 1.5;
             reviewsCarousel.scrollLeft = scrollLeft - walk;
         });
     }
@@ -182,7 +175,6 @@ setTimeout(() => {
     if (filterButtons.length > 0 && portfolioCards.length > 0) {
         filterButtons.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Set active class
                 filterButtons.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 
@@ -192,7 +184,6 @@ setTimeout(() => {
                     const category = card.getAttribute('data-category');
                     if (filter === 'all' || category === filter) {
                         card.style.display = 'block';
-                        // Add subtle reveal effect
                         setTimeout(() => {
                             card.style.opacity = '1';
                             card.style.transform = 'scale(1)';
@@ -219,13 +210,11 @@ setTimeout(() => {
             headerBtn.addEventListener('click', () => {
                 const isOpen = item.classList.contains('active');
                 
-                // Close all other items first
                 faqItems.forEach(otherItem => {
                     otherItem.classList.remove('active');
                     otherItem.querySelector('.faq-content').style.maxHeight = null;
                 });
                 
-                // Toggle current item
                 if (!isOpen) {
                     item.classList.add('active');
                     content.style.maxHeight = content.scrollHeight + 'px';
@@ -234,39 +223,40 @@ setTimeout(() => {
         });
     }
 
-    // 12. Contact Form Submission Handling (contact.html)
+    // 12. Contact Form — EmailJS Integration
     const contactForm = document.getElementById('contact-form');
     const successMsg = document.getElementById('success-message');
+
     if (contactForm && successMsg) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            
-            // Basic fields grab
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const project = document.getElementById('project').value;
-            
-            // Perform dummy loading on the button
+
             const submitBtn = contactForm.querySelector('.form-btn');
             const originalText = submitBtn.innerHTML;
             submitBtn.disabled = true;
             submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
-            
-            // Simulate API request
-            setTimeout(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalText;
-                
-                // Reset form
-                contactForm.reset();
-                
-                // Hide form and show success message
-                contactForm.style.display = 'none';
-                successMsg.style.display = 'block';
-                
-                // Smooth scroll to top of form section
-                successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 1500);
+
+            const templateParams = {
+                name:    document.getElementById('name').value,
+                email:   document.getElementById('email').value,
+                phone:   document.getElementById('phone').value || 'Not provided',
+                brand:   document.getElementById('brand').value || 'Not provided',
+                project: document.getElementById('project').value,
+                message: document.getElementById('message').value
+            };
+
+            emailjs.send('service_s4sr6kk', 'template_h4v3ma8', templateParams)
+                .then(function () {
+                    contactForm.reset();
+                    contactForm.style.display = 'none';
+                    successMsg.style.display = 'block';
+                    successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                })
+                .catch(function (error) {
+                    console.error('EmailJS error:', error);
+                    submitBtn.innerHTML = 'Failed. Try Again <i class="fas fa-exclamation-circle"></i>';
+                    submitBtn.disabled = false;
+                });
         });
     }
 });
