@@ -170,8 +170,9 @@ p {
     align-items: center;
     font-size: 32px;
     box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-    z-index: 1000;
+    z-index: 999;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: translateZ(0);
 }
 
 .whatsapp-float:hover {
@@ -410,7 +411,6 @@ header.scrolled .logo-img {
 
 /* Page Transitions */
 .page-fade-in {
-    .page-fade-in {
     animation: pageReveal 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
@@ -1811,10 +1811,9 @@ textarea.form-control {
     .section-title {
         font-size: 2rem;
     }
-    
 }
 
-
+/* Chatbase Select Dropdown Only */
 .cbWidget-select,
 [class*="select"],
 select {
@@ -1827,3 +1826,4 @@ select option {
     color: black !important;
     background: white !important;
 }
+
