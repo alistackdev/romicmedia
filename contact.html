@@ -12,6 +12,12 @@
     <!-- CSS and FontAwesome Icons -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        emailjs.init('kR7PtWfRr3JKw35tH');
+    </script>
 </head>
 <body>
 
@@ -47,6 +53,7 @@
                 <li><a href="industries.html" class="nav-link">Industries</a></li>
                 <li><a href="faq.html" class="nav-link">FAQ</a></li>
                 <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                <li><a href="https://www.chatbase.co/B4U5oP-RhPYTHTbgzU2lm/help" target="_blank" class="nav-link">Romic AI Help</a></li>
                 <li><a href="contact.html" class="btn btn-solid nav-cta">Let's Talk</a></li>
             </ul>
         </div>
@@ -109,36 +116,36 @@
             
             <!-- Right side contact form -->
             <div class="glass-card glass-card-purple contact-form-card">
-                <form id="contact-form" action="#" method="POST">
+                <form id="contact-form">
                     
                     <!-- Name -->
                     <div class="form-group">
                         <label for="name" class="form-group-label">Your Name *</label>
-                        <input type="text" id="name" class="form-control" placeholder="e.g. John Doe" required>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="e.g. John Doe" required>
                     </div>
                     
                     <!-- Email -->
                     <div class="form-group">
                         <label for="email" class="form-group-label">Email Address *</label>
-                        <input type="email" id="email" class="form-control" placeholder="e.g. john@brand.com" required>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="e.g. john@brand.com" required>
                     </div>
                     
                     <!-- Phone -->
                     <div class="form-group">
                         <label for="phone" class="form-group-label">Phone Number (Optional)</label>
-                        <input type="tel" id="phone" class="form-control" placeholder="e.g. +92 300 1234567">
+                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="e.g. +92 300 1234567">
                     </div>
                     
                     <!-- Brand/Company -->
                     <div class="form-group">
                         <label for="brand" class="form-group-label">Your Brand / Company (Optional)</label>
-                        <input type="text" id="brand" class="form-control" placeholder="e.g. Acme Corp">
+                        <input type="text" id="brand" name="brand" class="form-control" placeholder="e.g. Acme Corp">
                     </div>
                     
                     <!-- Interest Dropdown -->
                     <div class="form-group">
                         <label for="project" class="form-group-label">What Are You Interested In? *</label>
-                        <select id="project" class="form-control" required style="appearance: none; background-image: url('data:image/svg+xml;utf8,<svg fill=\"%23AAAAAA\" height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M7 10l5 5 5-5z\"/></svg>'); background-repeat: no-repeat; background-position: right 15px center;">
+                        <select id="project" name="project" class="form-control" required style="appearance: none; background-image: url('data:image/svg+xml;utf8,<svg fill=\"%23AAAAAA\" height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M7 10l5 5 5-5z\"/></svg>'); background-repeat: no-repeat; background-position: right 15px center;">
                             <option value="" disabled selected>Select an option...</option>
                             <option value="Content Creation">Content Creation</option>
                             <option value="Social Media Management">Social Media Management</option>
@@ -154,13 +161,13 @@
                     <!-- Description -->
                     <div class="form-group">
                         <label for="message" class="form-group-label">Tell Us About Your Project *</label>
-                        <textarea id="message" class="form-control" placeholder="Describe your goals, targets, and timeline..." required></textarea>
+                        <textarea id="message" name="message" class="form-control" placeholder="Describe your goals, targets, and timeline..." required></textarea>
                     </div>
                     
                     <!-- Submit button -->
                     <button type="submit" class="btn btn-solid form-btn">Let's Talk! 🚀</button>
                     
-                    <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-top: 15px;"> </p>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-top: 15px;">.</p>
                 </form>
                 
                 <!-- Success Message -->
@@ -190,9 +197,9 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <!-- <li><a href="work.html">Work</a></li> -->
                     <li><a href="industries.html">Industries</a></li>
                     <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="https://www.chatbase.co/B4U5oP-RhPYTHTbgzU2lm/help" target="_blank">AI Help / Assistant</a></li>
                 </ul>
             </div>
             
@@ -225,6 +232,7 @@
         
         <div class="bottom-bar">
             <p>&copy; 2025 Romic Media. All Rights Reserved.</p>
+            <p>Designed & Developed By Ali Hassan <span style="color: #4a4a4a; margin: 0 8px;">|</span> <a href="mailto:alihassanguaraya.net@gmail.com" style="color: inherit; text-decoration: none;">alihassanguaraya.net@gmail.com</a></p>
         </div>
     </footer>
 
