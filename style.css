@@ -277,7 +277,7 @@ header.scrolled {
 }
 
 .logo-img {
-    height: 90px; /* logo size setting */
+    height: 55px; /* logo size setting */
     object-fit: contain;
     transition: var(--transition-medium);
 }
@@ -476,7 +476,7 @@ section {
     display: flex;
     align-items: center;
     position: relative;
-    padding-top: 120px;
+    padding-top: 100px;
     padding-bottom: 60px;
     overflow: hidden;
 }
@@ -511,7 +511,7 @@ section {
 .hero-subtitle {
     font-size: 1.4rem;
     color: var(--text-secondary);
-    margin-bottom: 40px;
+    margin-bottom: 25px;
     max-width: 650px;
     margin-left: auto;
     margin-right: auto;
